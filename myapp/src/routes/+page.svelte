@@ -1,22 +1,26 @@
 <script>
-	let characterName;
-
-fetch('http://127.0.0.1:8000/sensor')
-    .then((response) => response.json())
-    .then((character) => {
-        characterName = character;
+    import { onMount } from "svelte";
+    // заменить название переменной на подходящее
+	let characterName = [{}];
+    onMount(() => {
+        fetch('http://127.0.0.1:8000/sensor')
+            .then((response) => response.json())
+            .then((character) => {
+                characterName = character;
+            })
     })
     console.log(characterName)
 </script>
 
 <svelte:head>
 	<title>Sibur</title>
+    <!-- Написать какое-нибудь описание вместо svelte demo app -->
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-
-
-<h1 align="center">
+{characterName ? characterName[0] : null}
+<!-- Вот тут нужно убрать align center -->
+<h1 align="center"> 
     ESG повестка НПЗ города Свободный
 </h1>
 <p>
