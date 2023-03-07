@@ -1,15 +1,12 @@
-<script>
+<script lang="js">
     import { onMount } from "svelte";
     // заменить название переменной на подходящее
-	let characterName = [{}];
-    onMount(() => {
-        fetch('http://127.0.0.1:8000/sensor')
-            .then((response) => response.json())
-            .then((character) => {
-                characterName = character;
-            })
-    })
-    console.log(characterName)
+	let data = [{}];
+    onMount(async function () {
+        const response = await fetch("http://127.0.0.1:8000/sensor");
+        data = await response.json(); 
+    });
+    // $:console.log(characterName)
 </script>
 
 <svelte:head>
@@ -18,7 +15,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-{characterName ? characterName[0] : null}
+{data ? data[0].name : null}
 <!-- Вот тут нужно убрать align center -->
 <h1 align="center"> 
     ESG повестка НПЗ города Свободный
