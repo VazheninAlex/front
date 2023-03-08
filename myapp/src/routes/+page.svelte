@@ -1,22 +1,23 @@
-<script>
-	let characterName;
-
-fetch('http://127.0.0.1:8000/sensor')
-    .then((response) => response.json())
-    .then((character) => {
-        characterName = character;
-    })
-    console.log(characterName)
+<script lang="js">
+    import { onMount } from "svelte";
+    // заменить название переменной на подходящее
+	let data = [{}];
+    onMount(async function () {
+        const response = await fetch("http://127.0.0.1:8000/sensor");
+        data = await response.json(); 
+    });
+     $:console.log(data)
 </script>
 
 <svelte:head>
 	<title>Sibur</title>
+    <!-- Написать какое-нибудь описание вместо svelte demo app -->
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-
-
-<h1 align="center">
+{data ? data[0].name : null}
+<!-- Вот тут нужно убрать align center -->
+<h1> 
     ESG повестка НПЗ города Свободный
 </h1>
 <p>
@@ -44,5 +45,7 @@ margin-top: -50px; background: blue;">
 
 
 <style>
-	
+    h1{
+        text-align: center;
+    }
 </style>
