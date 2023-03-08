@@ -1,12 +1,19 @@
 <script lang="js">
     import { onMount } from "svelte";
+    import Button from '@smui/button';
     // заменить название переменной на подходящее
 	let data = [{}];
     onMount(async function () {
         const response = await fetch("http://127.0.0.1:8000/sensor");
         data = await response.json(); 
     });
-     $:console.log(data)
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+    function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
 </script>
 
 <svelte:head>
@@ -15,7 +22,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-{data ? data[0].name : null}
+
 <!-- Вот тут нужно убрать align center -->
 <h1> 
     ESG повестка НПЗ города Свободный
@@ -23,25 +30,21 @@
 <p>
     Текст
 </p>
+{#each data as number}
 <p style="margin-top: 100px">
-    Уровень PH
+    {data ? number.name : null}
 </p>
 <div  style="width: 100px; height: 48px; border:1px solid; border-radius:10px; margin-left: 400px;
-margin-top: -50px; background: blue;"> 
+margin-top: -50px; background: #00ff00;"> 
 <p align="center">
-    7
+    {data ? number.value : null}
 </p>
 </div>
+	{/each}
 
-<p style="margin-top: 100px">
-    Концентрация тяжелых металлов в почве
-</p>
-<div  style="width: 100px; height: 48px; border:1px solid; border-radius:10px; margin-left: 400px;
-margin-top: -50px; background: blue;"> 
-<p align="center">
-    10%
-</p>
-</div>
+<Button>123</Button>
+
+
 
 
 <style>
