@@ -36,7 +36,7 @@
 </p>
 <div  style="width: 100px; height: 48px; border:1px solid; border-radius:10px; margin-left: 400px;
 margin-top: -50px; background: #00ff00;"> 
-<p align="center">
+<p>
     {data ? number.value : null}
 </p>
 </div>
