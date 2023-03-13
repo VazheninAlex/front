@@ -1,11 +1,11 @@
 <script lang="js">
     import { onMount } from "svelte";
     import Button from '@smui/button';
-    // заменить название переменной на подходящее
 	let data = [{}];
     onMount(async function () {
         const response = await fetch("http://127.0.0.1:8000/sensor");
         data = await response.json(); 
+        console.log(data);
     });
     function componentToHex(c) {
         var hex = c.toString(16);
@@ -22,8 +22,7 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 
-
-<!-- Вот тут нужно убрать align center -->
+{data.length}
 <h1> 
     ESG повестка НПЗ города Свободный
 </h1>
@@ -35,8 +34,8 @@
     {data ? number.name : null}
 </p>
 <div  style="width: 100px; height: 48px; border:1px solid; border-radius:10px; margin-left: 400px;
-margin-top: -50px; background: #00ff00;"> 
-<p align="center">
+margin-top: -50px; background: {rgbToHex(255*2*number.colour,255*2*(1-number.colour),0)};"> 
+<p class="num">
     {data ? number.value : null}
 </p>
 </div>
@@ -49,6 +48,9 @@ margin-top: -50px; background: #00ff00;">
 
 <style>
     h1{
+        text-align: center;
+    }
+    .num{
         text-align: center;
     }
 </style>
