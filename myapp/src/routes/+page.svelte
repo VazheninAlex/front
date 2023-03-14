@@ -1,4 +1,7 @@
 <script lang="js">
+    const { palette } = createTheme();
+    const { augmentColor } = palette;
+
     import { onMount } from "svelte";
     import Button from '@smui/button';
 	let data = [{"name":"pH","value":1,"normalValue":7,"minValue":0,"maxValue":14,"colour":0.42857142857142855},{"name":"sensor2","value":27,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.23},{"name":"sensor3","value":14,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.36}];
@@ -41,7 +44,7 @@ margin-top: -50px; background: #00ff00;">
 </div>
 	{/each}
 
-<Button variant="raised">123</Button>
+<Button color={augmentColor({ color: { main: '#F40B27'} })} variant="raised">123</Button>
 
 
 
