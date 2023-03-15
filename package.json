@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "@svelteuidev/composables": "^0.10.0",
+    "@svelteuidev/core": "^0.10.0",
+    "@svelteuidev/dates": "^0.10.0",
+    "dayjs": "^1.11.7"
+  }
+}

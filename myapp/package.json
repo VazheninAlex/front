@@ -2,10 +2,8 @@
 	"name": "myapp",
 	"version": "0.0.1",
 	"scripts": {
-		"prepare": "npm run smui-theme",
-		"smui-theme": "smui-theme compile static/smui.css -i src/theme",
-		"dev": "npm run smui-theme && vite dev",
-		"build": "npm run smui-theme && vite build",
+		"dev": "vite dev",
+		"build": "vite build",
 		"preview": "vite preview",
 		"check": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json",
 		"check:watch": "svelte-kit sync && svelte-check --tsconfig ./jsconfig.json --watch"
@@ -25,6 +23,10 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"@svelteuidev/composables": "^0.10.0",
+		"@svelteuidev/core": "^0.10.0",
+		"@svelteuidev/dates": "^0.10.0",
+		"dayjs": "^1.11.7",
 		"svelte-material-ui": "^7.0.0-beta.0"
 	}
 }
