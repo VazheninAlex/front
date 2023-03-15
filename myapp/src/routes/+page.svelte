@@ -25,7 +25,7 @@
 <SvelteUIProvider>
     {data.length}
     <h1> 
-        ESG повестка НПЗ города Свободный
+        ESG повестка ГХК города Свободный
     </h1>
     <p>
         Текст
@@ -34,14 +34,12 @@
     <p style="margin-top: 100px">
         {data ? number.name : null}
     </p>
-    <!-- <div style="width: 100px; height: 48px; border:1px solid; border-radius:10px; margin-left: 400px; margin-top: -50px; background: #00ff00;"> -->
     <div style="width: 100px; height: 48px; margin-left: 400px; margin-top: -50px;">
-        <Button override={{ bc: '#ff00ff', color: '#00ff00' }} variant='outline'>
+        <Button override={{ bc: rgbToHex(255*2*number.colour, 255*(1-2*number.colour), 0), color: '#00ff00', '&:hover': { bc: rgbToHex(255*2*number.colour, 255*(1-2*number.colour), 0) }}} variant='outline'>
             {data ? number.value : null}
         </Button>
     </div>
         {/each}
-    <!-- <Button>123</Button> -->
 </SvelteUIProvider>
 
 
