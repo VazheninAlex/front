@@ -3,7 +3,7 @@
     import { Button, SvelteUIProvider } from "@svelteuidev/core";
 	let data = [{"name":"pH","value":7,"normalValue":7,"minValue":0,"maxValue":14,"colour":0.0},{"name":"sensor2","value":27,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.23},{"name":"sensor3","value":14,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.36}];
     onMount(async function () {
-        const response = await fetch("http://127.0.0.1:8000/sensor");
+        const response = await fetch("https://atlasserver-1-h4944389.deta.app/sensor");
         data = await response.json(); 
         console.log(data);
     });
