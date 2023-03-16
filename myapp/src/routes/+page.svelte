@@ -1,28 +1,7 @@
-<script context="module" lang="js">
-    export async function load({ fetch }) {
-        let res = await fetch('https://atlasserver-1-h4944389.deta.app/sensor');
-        if (res.ok) {
-            return {
-                props: {
-                    data: await res.json()
-                }
-            };
-        }
-        return {
-            status: res.status,
-            error: new Error()
-        };
-    }
-</script>
 <script lang="js">
-    import { onMount } from "svelte";
     import { Button, SvelteUIProvider } from "@svelteuidev/core";
-	export let data = [{"name":"pH","value":7,"normalValue":7,"minValue":0,"maxValue":14,"colour":0.0},{"name":"sensor2","value":27,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.23},{"name":"sensor3","value":14,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.36}];
-    // onMount(async function () {
-    //     const response = await fetch("https://atlasserver-1-h4944389.deta.app/sensor");
-    //     data = await response.json(); 
-    //     console.log(data);
-    // });
+	// export let data = [{"name":"pH","value":7,"normalValue":7,"minValue":0,"maxValue":14,"colour":0.0},{"name":"sensor2","value":27,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.23},{"name":"sensor3","value":14,"normalValue":50,"minValue":0,"maxValue":100,"colour":0.36}];
+    export let data
     function componentToHex(c) {
         var hex = c.toString(16);
         return hex.length == 1 ? "0" + hex : hex;
@@ -48,7 +27,7 @@
         В городе Свободный Амурской области строится новое предприятие СИБУРа Амурский газохимический комплекс.
         На нашем сайте каждый может найти данные о состоянии окружающей среды в городе Свободный: уровень Ph воды, концентрацию тяжелых металлов в почве и воздухе и тд.
     </p>
-    {#each data as number}
+    {#each data.props.data as number}
     <h3 class="name">
         {data ? number.name : null}
     </h3>

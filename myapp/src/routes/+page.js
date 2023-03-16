@@ -1,10 +1,19 @@
-// since there's no dynamic data here, we can prerender
-// it so that it gets served as a static asset in production
-// export const prerender = true;
-// /** @type {import('./$types').PageLoad} */
-// export async function load({ fetch }) {
-//     const res = await fetch(`https://atlasserver-1-h4944389.deta.app/sensor`);
-//     const item = await res.json();
-   
-//     return { item };
-//   }
+export async function load({ fetch }) {
+    let res = await fetch('https://atlasserver-4-h4944389.deta.app/sensor', {
+        method: "GET",
+        headers: {
+            "X-API-Key": "c0Pqf8Wkg92y_U3JHBztTUhD1ZQwVCB78gjVYauoeqXt8"
+        }
+    })
+    if (res.ok) {
+        return {
+            props: {
+                data: await res.json()
+            }
+        };
+    }
+    return {
+        status: res.status,
+        error: new Error()
+    };
+}
